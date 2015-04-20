@@ -67,6 +67,11 @@ class CalendarController extends Controller
         return $result;
     }
     
+    public function check()
+    {
+        
+    }
+    
     public function deleteAction($orderId, $date)
     {
         $em = $this->getDoctrine()
