@@ -15,7 +15,7 @@ class OrderRepository extends EntityRepository
     public function getOrders($date, $roomId = null)
     {
                 $qb = $this->createQueryBuilder('o')
-                   ->select('o.id', 'u.id', 'u.username')
+                   ->select('o')
                    ->innerJoin('o.user', 'u')
                    ->where('o.date = :date')
                    ->setParameter('date', $date);

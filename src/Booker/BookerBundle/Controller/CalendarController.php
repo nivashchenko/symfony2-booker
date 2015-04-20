@@ -67,11 +67,6 @@ class CalendarController extends Controller
         return $result;
     }
     
-    public function check()
-    {
-        
-    }
-    
     public function deleteAction($orderId, $date)
     {
         $em = $this->getDoctrine()
@@ -88,7 +83,6 @@ class CalendarController extends Controller
         }
         return new JsonResponse(array('response' => 'False'));
     }
-    
     
     public function createAction($date ,$time, $roomId)
     {

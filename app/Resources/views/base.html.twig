@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Booker{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <!-- Latest compiled and minified CSS -->
@@ -21,7 +21,7 @@
                 $( "#datepicker" ).on('change', function(){
                     window.location = "/booker/" + $("#datepicker").val();
                 });
-                
+
                 $.each($(".delete-booking"), function(c,v){
                     $(v).on("click", function(event){
                         event.preventDefault();
@@ -45,7 +45,7 @@
                         }
                     });
                 });
-                
+
 
                 $.each($(".btn-info"), function(e,n){
                     $(n).on("click", function(e){
