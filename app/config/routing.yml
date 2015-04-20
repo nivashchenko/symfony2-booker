@@ -1,0 +1,3 @@
+booker_booker:
+    resource: "@BookerBookerBundle/Resources/config/routing.yml"
+    prefix:   /

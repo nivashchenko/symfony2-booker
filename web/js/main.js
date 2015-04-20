@@ -1,0 +1,4 @@
+function getRooms(url)
+{
+    
+}

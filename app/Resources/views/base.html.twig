@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script>
+            $(function() {
+                $( "#datepicker" ).datepicker();
+                $( "#datepicker" ).datepicker( "option", "showAnim", "drop" );
+                $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+                $("#datepicker").val("{{date}}");
+                $( "#datepicker" ).on('change', function(){
+                    window.location = "/booker/" + $("#datepicker").val();
+                });
+                
+                $.each($(".delete-booking"), function(c,v){
+                    $(v).on("click", function(event){
+                        event.preventDefault();
+                        var conf = confirm('Do you really want to remove this booking?');
+                        if ( true === conf )
+                        {
+                            $.ajax({
+                                method: "GET",
+                                url: v.href
+                              })
+                            .done(function( msg ) {
+                                if ( "undefined" == typeof(msg.response) )
+                                {
+                                    window.location = "/booker/" + $("#datepicker").val();
+                                }
+                                else
+                                {
+                                    alert( msg.response );
+                                }
+                            });
+                        }
+                    });
+                });
+                
+
+                $.each($(".btn-info"), function(e,n){
+                    $(n).on("click", function(e){
+                        e.preventDefault();
+                        var conf = confirm('Do you really want to book this room?');
+                        if ( true === conf )
+                        {
+                            $.ajax({
+                                method: "GET",
+                                url: n.formAction
+                              })
+                            .done(function( msg ) {
+                                if ( "undefined" == typeof(msg.response) )
+                                {
+                                    window.location = "/booker/" + $("#datepicker").val();
+                                }
+                                else
+                                {
+                                    alert( msg.response );
+                                }
+                            });
+                        }
+                    });
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+        {% endblock %}
+    </body>
+</html>
