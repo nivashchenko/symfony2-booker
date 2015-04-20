@@ -84,10 +84,6 @@ class CalendarController extends Controller
         return new JsonResponse(array('response' => 'False'));
     }
     
-    public function checkCreateAction($date ,$time, $roomId)
-    {
-        
-    }
     
     public function createAction($date ,$time, $roomId)
     {
